@@ -243,7 +243,8 @@ def create_event(component, utc_default):
         event.sequence = component.get("sequence")
 
     if component.get("categories"):
-        categories = component.get("categories").cats
+        categoriesval = component.get("categories")
+        categories = component.get("categories").cats if hasattr(categoriesval, "cats") else categoriesval
         encoded_categories = list()
         for category in categories:
             encoded_categories.append(encode(category))
